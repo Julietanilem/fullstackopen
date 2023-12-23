@@ -2,6 +2,11 @@
 sequenceDiagram
     participant browser
     participant server
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    Note left of server: The server saves the note and sends a 302 status code which indicates redirection for the browser.
+    activate server
+    server-->>browser:  302 Found
+    deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
